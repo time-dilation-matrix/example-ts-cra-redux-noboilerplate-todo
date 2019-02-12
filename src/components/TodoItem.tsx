@@ -1,50 +1,48 @@
-import React from "react";
+import React from "react"
 
-import {createTodoConnect} from "../redux/store";
+import { createTodoConnect } from "../redux/store"
 
 const TodoConnect = createTodoConnect({
-    mapState: (selectors, props: {id: string}) => selectors.getTodo(props.id),
+  mapState: (selectors, props: { id: string }) => selectors.getTodo(props.id),
 
-    mapActions: (actions, props) => ({
-        setText(text: string) {
-            actions.setTodoText({id: props.id, text});
-        },
+  mapActions: (actions, props) => ({
+    setText(text: string) {
+      actions.setTodoText({ id: props.id, text })
+    },
 
-        complete() {
-            actions.completeTodo({id: props.id});
-        },
-        revert() {
-            actions.revertTodo({id: props.id});
-        },
-    }),
-});
+    complete() {
+      actions.completeTodo({ id: props.id })
+    },
+    revert() {
+      actions.revertTodo({ id: props.id })
+    },
+  }),
+})
 
-const TodoItem = (props: {id: string}) => (
-    <TodoConnect id={props.id}>
-        {(data, actions) => (
-            <div>
-                <input
-                    value={data.text}
-                    onChange={e => {
-                        actions.setText(e.target.value);
-                    }}
-                />
+const TodoItem = (props: { id: string }) => (
+  <TodoConnect id={props.id}>
+    {(data, actions) => (
+      <div>
+        <input
+          value={data.text}
+          onChange={e => {
+            actions.setText(e.target.value)
+          }}
+        />
 
-                <button
-                    onClick={data.completed ? actions.revert : actions.complete}
-                >
-                    {data.completed ? "revert" : "complete"}
-                </button>
-                {data.saveState}
-            </div>
-        )}
-    </TodoConnect>
-);
+        <button onClick={data.completed ? actions.revert : actions.complete}>
+          {data.completed ? "revert" : "complete"}
+        </button>
+        {data.saveState}
+      </div>
+    )}
+  </TodoConnect>
+)
 
 //  No typing for this yet
 //reactjs.org/docs/react-api.html#reactmemo
 declare module "react" {
-    function memo<T>(a: T): T;
+  function memo<T>(a: T): T
 }
 
-export default React.memo(TodoItem);
+export default React.memo(TodoItem)

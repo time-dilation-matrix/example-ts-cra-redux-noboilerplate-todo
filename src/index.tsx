@@ -1,20 +1,20 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import {Provider} from "react-redux";
+import React from "react"
+import ReactDOM from "react-dom"
+import { Provider } from "react-redux"
 
-import Main from "./components/Main";
-import {createTodoStore} from "./redux/store";
+import Main from "./components/Main"
+import { createTodoStore } from "./redux/store"
 
-const store = createTodoStore();
+const store = createTodoStore()
 
 function Root() {
-    return (
-        <Provider store={store}>
-            <Main />
-        </Provider>
-    );
+  return (
+    <Provider store={store}>
+      <Main />
+    </Provider>
+  )
 }
 
-const el = document.getElementById("root");
+const el = document.getElementById("root")
 
-ReactDOM.render(<Root />, el);
+ReactDOM.render(<Root />, el)

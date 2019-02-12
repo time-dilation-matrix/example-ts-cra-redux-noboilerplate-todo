@@ -2,6 +2,7 @@
     "name": "typescript-redux-todoapp",
     "version": "0.1.0",
     "private": true,
+    "license": "UNLICENSED",
     "dependencies": {
         "@types/node": "^10.12.18",
         "@types/react": "^16.7.21",

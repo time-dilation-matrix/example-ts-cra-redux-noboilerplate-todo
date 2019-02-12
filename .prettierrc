@@ -1,5 +1,5 @@
 {
-  "bracketSpacing": false,
-  "trailingComma": "all",
-  "tabWidth": 4
+  "semi": false,
+  "printWidth": 120,
+  "trailingComma": "es5"
 }
