@@ -3,13 +3,18 @@ import { applyMiddleware, bindActionCreators, compose, createStore, Reducer } fr
 import { makeConnector } from "redux-render-prop"
 import createSagaMiddleware from "redux-saga"
 
-import { TodoActions, TodoLifecycleReducer, TodoReducer } from "./actions"
+import { CharActions, CharReducer, TodoActions, TodoLifecycleReducer, TodoReducer } from "./actions"
 import { rootSaga } from "./sagas"
 import { initialState, Selectors, State } from "./state"
 
 export const createTodoConnect = makeConnector({
   prepareState: (state: State) => new Selectors(state),
   prepareActions: dispatch => bindActionCreators(TodoActions, dispatch),
+})
+
+export const createCharConnect = makeConnector({
+  prepareState: (state: State) => new Selectors(state),
+  prepareActions: dispatch => bindActionCreators(CharActions, dispatch),
 })
 
 declare global {
@@ -44,6 +49,7 @@ function composeReducers<S>(...reducers: (Reducer<S, any>)[]): Reducer<any, any>
 export function createTodoStore() {
   const reducer = composeReducers<State>(
     createReducerFunction(TodoReducer, initialState),
+    createReducerFunction(CharReducer, initialState),
     createReducerFunction(TodoLifecycleReducer, initialState)
   )
   const sagaMiddleware = createSagaMiddleware()

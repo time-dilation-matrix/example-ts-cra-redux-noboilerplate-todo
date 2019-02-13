@@ -73,3 +73,14 @@ export class TodoLifecycleReducer extends ImmerReducer<State> {
 
 export const TodoActions = createActionCreators(TodoReducer)
 export const TodoLifecycleActions = createActionCreators(TodoLifecycleReducer)
+
+export class CharReducer extends ImmerReducer<State> {
+  selectors = new Selectors(this.draftState)
+  applyAction(payload: { id: string; dmg: number; cost: number }) {
+    const char = this.selectors.getCharByID(payload.id)
+    char.health = char.health - payload.dmg
+    char.energy = char.energy - payload.cost
+    console.log(char, payload)
+  }
+}
+export const CharActions = createActionCreators(CharReducer)

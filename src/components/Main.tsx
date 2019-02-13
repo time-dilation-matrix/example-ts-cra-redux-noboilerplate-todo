@@ -1,7 +1,8 @@
 import React from "react"
 
-import { createTodoConnect } from "../redux/store"
+import { createCharConnect, createTodoConnect } from "../redux/store"
 
+import CharItem from "./CharItem"
 import TodoItem from "./TodoItem"
 
 const AddTodoConnect = createTodoConnect({
@@ -14,6 +15,15 @@ const TodoListConnect = createTodoConnect({
   mapState: selectors => ({
     todos: selectors.getTodoIDs(),
     completed: selectors.getComletedIDs(),
+  }),
+})
+
+const CharListConnect = createCharConnect({
+  // mapActions: actions => ({
+  //   applyAction: actions.applyAction,
+  // }),
+  mapState: selectors => ({
+    chars: selectors.getCharIDsAll(),
   }),
 })
 
@@ -50,6 +60,17 @@ const Main = () => (
         </>
       )}
     </TodoListConnect>
+
+    <CharListConnect>
+      {data => (
+        <>
+          <h1>Chars</h1>
+          {data.chars.map(id => (
+            <CharItem key={id} id={id} />
+          ))}
+        </>
+      )}
+    </CharListConnect>
   </div>
 )
 
