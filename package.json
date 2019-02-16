@@ -7,7 +7,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
     "@blueprintjs/core": "^3.13.0",
@@ -28,7 +30,13 @@
   },
   "devDependencies": {
     "prettier": "^1.16.1",
-    "tslint": "^5.12.1"
+    "tslint": "^5.12.1",
+    "@storybook/react": "^4.1.11",
+    "@storybook/addon-actions": "^4.1.11",
+    "@storybook/addon-links": "^4.1.11",
+    "@storybook/addons": "^4.1.11",
+    "@babel/core": "^7.3.3",
+    "babel-loader": "^8.0.5"
   },
   "eslintConfig": {
     "extends": "react-app"
