@@ -2,8 +2,12 @@ import React from "react"
 
 import { createCharConnect, createTodoConnect } from "../redux/store"
 
+import "./../styles/Main.scss"
 import CharItem from "./CharItem"
 import TodoItem from "./TodoItem"
+
+// import "@blueprintjs/core/dist/blueprint.css"
+// import "normalize.css/normalize.css"
 
 const AddTodoConnect = createTodoConnect({
   mapActions: actions => ({
