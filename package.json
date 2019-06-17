@@ -1,8 +1,8 @@
 {
-  "name": "typescript-redux-todoapp",
+  "name": "example-ts-cra-redux-noboilerplate-todo",
   "version": "0.1.0",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
